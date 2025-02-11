@@ -1,0 +1,33 @@
+
+<div id="map" style="height: 300px;"></div>
+
+
+<script>
+let map = L.map('map').setView([53.2734, -7.77832031],6);
+
+  L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
+    maxZoom: 19,
+    attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
+}).addTo(map);
+  
+  
+  // Above code sets the view of the map that is seen pn the dashboard.
+  //All code is seen on https://leafletjs.com/examples/quick-start
+  //itierates between the poiLists and uses the coords to add that POI's lat and long as a marker to the map. 
+  {{#each poiLists}}
+            L.marker([{{this.lat}}, {{this.long}}]).addTo(map);
+        {{/each}}
+  
+  //  when the map is clicked at location it uses this to show the coordinates. From leaflet.js.com
+  var popup = L.popup();
+
+function onMapClick(e) {
+    popup
+        .setLatLng(e.latlng)
+        .setContent("The coordinates for this location are " + e.latlng.toString())
+        .openOn(map);
+}
+
+map.on('click', onMapClick);
+  
+</script>
