@@ -14,11 +14,14 @@ export const webRoutes = [
 
     { method: "GET", path: "/dashboard", config: dashboardController.index},
     { method: "POST", path: "/dashboard/addPOI", config: dashboardController.addPoiList},
+    { method: "GET", path: "/dashboard/deletePoiList/{id}", config: dashboardController.deletePoiList},
+
     
 
     { method: "GET", path: "/about", config: aboutController.index},
 
     { method: "GET", path: "/poiList/{id}", config: poiListController.index},
+    
 
 
 ];

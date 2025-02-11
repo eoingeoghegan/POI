@@ -24,5 +24,14 @@ export const dashboardController = {
         return h.redirect("/dashboard");
       },
     },
-  };
+
+    deletePoiList: {
+      handler: async function(request, h){
+        const poiList = await db.poiListStore.getPoiListById(request.params.id)
+        await db.poiListStore.deletePoiListById(poiList._id)
+      return h.redirect("/dashboard")
+        },
+      },
+    };
+  
   
