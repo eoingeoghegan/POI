@@ -1,0 +1,26 @@
+
+   {{#each poiLists}}
+  <div class="box box-link-hover-shadow">
+    <h2 class="title">
+      {{title}}
+    </h2>
+    <div class="box">
+      <label class="label">Latitude: {{ lat}}</label>
+    </div>
+     <div class="box">
+       <label class="label">Longitude: {{ long}}</label>
+    </div>
+    <a href="/poiList/{{_id}}" class="button is-link">
+      <span class="icon is-small">
+        <i class="fas fa-folder-open"></i>
+      </span>
+    </a>
+    
+      </span>
+    </a>
+  </div>
+{{/each}}
+
+
+  
+
