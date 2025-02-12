@@ -1,14 +1,14 @@
 import { userMemStore } from "./mem/user-mem-store.js";
-import { poiListMemStore} from "./mem/poiList-mem-store.js";
+import { categoryMemStore} from "./mem/category-mem-store.js";
 
 
 export const db = {
   userStore: null,
-  poiListStore: null,
+  categoryStore: null,
   
 
   init() {
     this.userStore = userMemStore;
-    this.poiListStore= poiListMemStore;
+    this.categoryStore= categoryMemStore;
   },
 };

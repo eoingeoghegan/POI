@@ -1,7 +1,7 @@
 import { dashboardController } from "./controllers/dashboard-controller.js";
 import { accountsController } from "./controllers/accounts-controller.js";
 import { aboutController}  from "./controllers/about-controller.js";
-import { poiListController} from "./controllers/poiList-controller.js";
+import { categoryController} from "./controllers/category-controller.js";
 
 
 export const webRoutes = [
@@ -13,14 +13,14 @@ export const webRoutes = [
     { method: "POST", path: "/authenticate", config: accountsController.login},
 
     { method: "GET", path: "/dashboard", config: dashboardController.index},
-    { method: "POST", path: "/dashboard/addPOI", config: dashboardController.addPoiList},
-    { method: "GET", path: "/dashboard/deletePoiList/{id}", config: dashboardController.deletePoiList},
+    { method: "POST", path: "/dashboard/addCategory", config: dashboardController.addCategory},
+    { method: "GET", path: "/dashboard/deleteCategory/{id}", config: dashboardController.deleteCategory},
 
     
 
     { method: "GET", path: "/about", config: aboutController.index},
 
-    { method: "GET", path: "/poiList/{id}", config: poiListController.index},
+    { method: "GET", path: "/category/{id}", config: categoryController.index},
     
 
 

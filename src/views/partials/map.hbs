@@ -15,7 +15,7 @@ let map = L.map('map').setView([53.2734, -7.77832031],6);
   //All code is seen on https://leafletjs.com/examples/quick-start
   //itierates between the poiLists and uses the coords to add that POI's lat and long as a marker to the map. 
   {{#each poiLists}}
-            L.marker([{{this.lat}}, {{this.long}}]).addTo(map);
+            L.marker(["{{this.lat}}", "{{this.long}}"]).addTo(map);
         {{/each}}
   
   //  when the map is clicked at location it uses this to show the coordinates. From leaflet.js.com
