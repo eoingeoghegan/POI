@@ -1,4 +1,5 @@
 import { v4 } from "uuid";
+import { placemarkerMemStore } from "./placemarker-mem-store.js";
 
 
 
@@ -16,8 +17,10 @@ export const categoryMemStore= {
    },
  
    async getCategoryById(id) {
-     return categories.find((category) => category._id === id);
-   },
+    const list = categories.find((category) => category._id === id);
+    list.placemarkers = await placemarkerMemStore.getPlacemarkersByCategoryId(list._id);
+    return list;
+  },
  
    async deleteCategoryById(id) {
      const index = categories.findIndex((category) => category._id === id);

@@ -21,6 +21,11 @@ export const webRoutes = [
     { method: "GET", path: "/about", config: aboutController.index},
 
     { method: "GET", path: "/category/{id}", config: categoryController.index},
+    { method: "POST", path: "/category/{id}/addPlacemarker", config: categoryController.addPlacemarker},
+    
+
+
+    
     
 
 
