@@ -15,6 +15,11 @@ export const categoryMemStore= {
     categories.push(category);
      return category;
    },
+
+   async getUserCategories(userid) {
+    return categories.filter((category) => category.userid === userid);
+  },
+
  
    async getCategoryById(id) {
     const list = categories.find((category) => category._id === id);
