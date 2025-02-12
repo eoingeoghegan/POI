@@ -38,8 +38,8 @@ export const placemarkerMemStore = {
   async updatePlacemarkers(placemarker, updatedPlacemarker) {
     placemarker.title = updatedPlacemarker.title;
     placemarker.description = updatedPlacemarker.description;
-    placemarkers.lat = updatedPlacemarker.lat;
-    placemarkers.long = updatedPlacemarker.long;
-    placemarkers.difficulty = updatedPlacemarker.difficulty;
+    placemarker.lat = updatedPlacemarker.lat;
+    placemarker.long = updatedPlacemarker.long;
+    placemarker.difficulty = updatedPlacemarker.difficulty;
   },
 };

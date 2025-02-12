@@ -1,0 +1,24 @@
+{
+  "users": [
+    {
+      "firstName": "Eoin",
+      "lastName": "Geoghegan",
+      "email": "egghead1004@gmail.com",
+      "password": "a",
+      "_id": "7e2d4c9c-bb69-41fc-91ce-0fb4efc27997"
+    }
+  ],
+  "categories": [
+    {
+      "userid": "7e2d4c9c-bb69-41fc-91ce-0fb4efc27997",
+      "title": "wexford walks",
+      "_id": "62476928-75bb-4382-bd71-d582a3c142fb"
+    },
+    {
+      "userid": "7e2d4c9c-bb69-41fc-91ce-0fb4efc27997",
+      "title": "carlow",
+      "_id": "aa7c8f1f-14dd-4da3-85f6-728d95c75787"
+    }
+  ],
+  "placemarkers": []
+}
