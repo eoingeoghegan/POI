@@ -11,14 +11,19 @@
   "categories": [
     {
       "userid": "7e2d4c9c-bb69-41fc-91ce-0fb4efc27997",
-      "title": "wexford walks",
-      "_id": "62476928-75bb-4382-bd71-d582a3c142fb"
-    },
-    {
-      "userid": "7e2d4c9c-bb69-41fc-91ce-0fb4efc27997",
-      "title": "carlow",
-      "_id": "aa7c8f1f-14dd-4da3-85f6-728d95c75787"
+      "title": "Wexford Walks",
+      "_id": "30aa3f4f-82b8-458b-b930-42461bb6961a"
     }
   ],
-  "placemarkers": []
+  "placemarkers": [
+    {
+      "title": "Askamore Trails",
+      "description": "The Askamore Loop Trail in County Wexford starts at the Askamore Church car park.  This 5.3 km loop follows green arrows in a clockwise direction through Askamore Forest, utilizing sandy lanes and forest roads. The trail features steady climbs and descents on the access lane, while the loop itself remains relatively level, offering fine views of the surrounding countryside.",
+      "lat": "52.672069",
+      "long": "-6.479083",
+      "difficulty": "Easy",
+      "_id": "769e102f-6b16-4535-818c-d94c68fca058",
+      "categoryid": "30aa3f4f-82b8-458b-b930-42461bb6961a"
+    }
+  ]
 }
