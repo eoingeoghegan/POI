@@ -2,7 +2,7 @@ import { dashboardController } from "./controllers/dashboard-controller.js";
 import { accountsController } from "./controllers/accounts-controller.js";
 import { aboutController}  from "./controllers/about-controller.js";
 import { categoryController} from "./controllers/category-controller.js";
-
+import {userController} from "./controllers/user-controller.js";
 
 export const webRoutes = [
     { method: "GET", path: "/", config: accountsController.index },
@@ -16,7 +16,8 @@ export const webRoutes = [
     { method: "POST", path: "/dashboard/addCategory", config: dashboardController.addCategory},
     { method: "GET", path: "/dashboard/deleteCategory/{id}", config: dashboardController.deleteCategory},
 
-    
+    { method: "GET", path: "/user", config: userController.index},
+    { method: "POST", path: "/update", config: userController.updateUserDetails},
 
     { method: "GET", path: "/about", config: aboutController.index},
 

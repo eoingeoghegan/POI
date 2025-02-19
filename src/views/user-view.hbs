@@ -1,0 +1,35 @@
+{{> menu  active="user"}}
+
+<section class="box">
+    <label class="label">Current User Details</label>
+    <ul>
+        <li><b>FirstName: </b>{{ user.firstName}}</li>
+        <li><b>LastName: </b>{{ user.lastName}}</li>
+        <li><b>Email: </b>{{ user.email}}</li>
+
+    </ul>
+</section>
+
+
+<section class="box">
+
+    <form action="/update" method="POST">
+      
+        <label class="label">Update User Details</label>
+        <div class="field">
+            <input class="input" type="text" placeholder="Enter new First name" name="firstName">
+        </div>
+        <div class="field">
+            <input class="input" type="text" placeholder="Enter new Last Name" name="lastName">
+        </div>
+        <div class="field">
+            <input class="input" type="text" placeholder="Enter new Email Address" name="email">
+        </div>
+        <div class="field">
+            <input class="input" type="password" placeholder="Enter New Password" name="password">
+        </div>
+        <button class="button is-primary">Update Details</button>
+    </form>
+    
+    
+</section>
