@@ -6,6 +6,7 @@ export const userController= {
             const loggedInUser = await db.userStore.getUserById(request.auth.credentials._id);
             console.log("Logged-in User (On Page Load):", loggedInUser); // Logs user when page loads
             
+            
             return h.view("user-view", { 
                 title: "User Details", 
                 user: loggedInUser 

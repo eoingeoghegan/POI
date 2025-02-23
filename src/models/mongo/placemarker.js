@@ -4,8 +4,10 @@ const { Schema } = Mongoose;
 
 const placemarkerSchema = new Schema({
   title: String,
-  artist: String,
-  duration: Number,
+  description: String,
+  lat: Number,
+  long: Number,
+  difficulty: String,
   categoryid: {
     type: Schema.Types.ObjectId,
     ref: "Placemarker",

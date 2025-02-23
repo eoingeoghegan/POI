@@ -8,11 +8,11 @@ export const categoryMongoStore = {
     return categories;
   },
 
-  async getCtegoryById(id) {
+  async getCategoryById(id) {
     if (Mongoose.isValidObjectId(id)) {
       const category = await Category.findOne({ _id: id }).lean();
       if (category) {
-        category.tracks = await placemarkerMongoStore.getPlacemarkersByCategoryId(category._id);
+        category.placemarkers = await placemarkerMongoStore.getPlacemarkersByCategoryId(category._id);
       }
       return category;
     }
