@@ -1,20 +1,6 @@
 {
-  "users": [
-    {
-      "firstName": "Eoin",
-      "lastName": "Geoghegan",
-      "email": "egghead1004@gmail.com",
-      "password": "a",
-      "_id": "7e2d4c9c-bb69-41fc-91ce-0fb4efc27997"
-    }
-  ],
-  "categories": [
-    {
-      "userid": "7e2d4c9c-bb69-41fc-91ce-0fb4efc27997",
-      "title": "Wexford Walks",
-      "_id": "30aa3f4f-82b8-458b-b930-42461bb6961a"
-    }
-  ],
+  "users": [],
+  "categories": [],
   "placemarkers": [
     {
       "title": "Askamore Trails",

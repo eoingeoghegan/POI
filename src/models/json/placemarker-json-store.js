@@ -18,18 +18,35 @@ export const placemarkerJsonStore = {
 
   async getPlacemarkerByCategoryId(id) {
     await db.read();
-    return db.data.placemarkers.filter((placemarker) => placemarker.categoryid === id);
+    let foundPlacemarkers = db.data.placemarkers.filter((placemarker) => placemarker.categoryid === id);
+    if (!foundPlacemarkers) {
+      foundPlacemarkers = null;
+    }
+    return foundPlacemarkers;
   },
 
   async getPlacemarkersById(id) {
     await db.read();
-    return db.data.placemarkers.find((placemarker) => placemarker._id === id);
+    let foundPlacemarker = db.data.placemarkers.find((placemarker) => placemarker._id === id);
+    if (!foundPlacemarker) {
+      foundPlacemarker = null;
+    }
+    return foundPlacemarker;
+  },
+
+  async getCategoryPlacemarkers(categoryId) {
+    await db.read();
+    let foundPlacemarkers = placemarkers.filter((placemarker) => placemarker.categoryid === categoryId);
+    if (!foundPlacemarkers) {
+      foundPlacemarkers = null;
+    }
+    return foundPlacemarkers;
   },
 
   async deletePlacemarker(id) {
     await db.read();
     const index = db.data.placemarkers.findIndex((placemarker) => placemarker._id === id);
-    db.data.placemarkers.splice(index, 1);
+    if(index !== -1) db.data.placemarkers.splice(index, 1);
     await db.write();
   },
 
