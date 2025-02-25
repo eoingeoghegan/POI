@@ -7,6 +7,7 @@ import Cookie from "@hapi/cookie";
 import dotenv from "dotenv";
 import Joi from "joi";
 import { webRoutes } from "./web-routes.js";
+import {apiRoutes} from "./api-routes.js";
 import { db } from "./models/db.js";
 
 
@@ -58,6 +59,7 @@ if (result.error) {
 
   db.init("mongo");
   server.route(webRoutes);
+  server.route(apiRoutes);
   await server.start();
   console.log("Server running on %s", server.info.uri);
 }
