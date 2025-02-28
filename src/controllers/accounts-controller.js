@@ -1,6 +1,12 @@
 import { db } from "../models/db.js";
 import { UserSpec, UserCredentialsSpec } from "../models/joi-schemas.js";
 
+
+// the accounts controller is responsible for signing Up, logging in and out.
+// the user is asked to signup using joi validation schema. If a user enters a wrong value an error message will show asking for correct details.
+// auth is set to false so that the pages can be accessed.
+
+
 export const accountsController = {
   index: {
     auth: false,
@@ -15,8 +21,9 @@ export const accountsController = {
     },
   },
   
-
-  signup: {
+// When correct information is added the handler requests this info and sends it to the model addUser to be stored in a database.
+// user is then directed back to main view.
+signup: {
     auth: false,
     validate: {
       payload: UserSpec,
@@ -39,6 +46,10 @@ export const accountsController = {
     },
   },
 
+// logging in expects the user to enter a stored email and password entered when signing up. 
+  // It works by requesting the email and password entered and looks for the user with the same email address.
+  // If the users email or password is incorrect then they are redirected back to main view otherwise redirected to the dashboard.
+  
   login: {
     auth: false,
     validate: {
@@ -48,6 +59,7 @@ export const accountsController = {
         return h.view("login-view", { title: "Log in error", errors: error.details }).takeover().code(400);
       },
     },
+  
     handler: async function (request, h) {
       const { email, password } = request.payload;
       const user = await db.userStore.getUserByEmail(email);
@@ -59,6 +71,7 @@ export const accountsController = {
     },
   },
 
+  // logout requests for cookies to be cleared, and redirects to main-view.
   logout: {
     auth: false,
     handler: function (request, h) {
@@ -67,6 +80,7 @@ export const accountsController = {
     },
   },
 
+// sessions work by getting the User by the their session id. If its the correct user it returns true using that users credentials.
   async validate(request, session) {
     const user = await db.userStore.getUserById(session.id);
     if (!user) {

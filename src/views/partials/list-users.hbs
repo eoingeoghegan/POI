@@ -1,0 +1,19 @@
+
+    
+        {{#each users}}
+        <ul>
+            <li class="box column is-one-third">
+                <b>Name: </b>{{this.firstName}} {{this.lastName}} <br>
+                <b>Email: </b>{{this.email}} <br>
+                <div>
+                    <a href="/admin/deleteAdminUser/{{this._id}}" class="button is-danger">
+                        <span class="icon is-small">
+                            <i class="fas fa-dumpster"></i>
+                        </span>
+                    </a>
+                </div>
+            </li>
+        </ul>
+        {{/each}}
+    
+</div>
