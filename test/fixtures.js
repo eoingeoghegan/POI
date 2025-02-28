@@ -69,3 +69,5 @@ export const maggie = {
     }
   ];
   
+
+  export const serviceUrl = "http://localhost:4000";
