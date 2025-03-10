@@ -1,3 +1,5 @@
+// objects to be used in testing 
+
 export const maggie = {
     firstName: "Maggie",
     lastName: "Simpson",
@@ -69,5 +71,5 @@ export const maggie = {
     }
   ];
   
-
+ // used in poiService.js for API 
   export const serviceUrl = "http://localhost:4000";

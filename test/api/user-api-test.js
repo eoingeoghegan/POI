@@ -4,6 +4,7 @@ import { assertSubset } from "../test-utils.js";
 import { maggie, testUsers } from "../fixtures.js";
 
 
+// deletes the users from array, then adds users from testUsers.
 suite("User API tests", () => {
   setup(async () => {
     await poiService.deleteAllUsers();
@@ -17,13 +18,15 @@ suite("User API tests", () => {
   });
   teardown(async () => {
   });
-
+ 
+  // created user Maggie and is given an Id number
   test("create a user", async () => {
     const newUser = await poiService.createUser(maggie);
     assertSubset(maggie, newUser);
     assert.isDefined(newUser._id);
   });
 
+  // gets all the users and checks if = 3 which is should be. Then tdeletes all users and check if = 0 
   test("delete all users", async () => {
     let returnedUsers = await poiService.getAllUsers();
     assert.equal(returnedUsers.length, 3);
@@ -32,11 +35,13 @@ suite("User API tests", () => {
     assert.equal(returnedUsers.length, 0);
   });
 
+  // checks for testUser at index 0 and checks if it is returned.
   test("get a user - success", async () => {
     const returnedUser = await poiService.getUser(testUsers[0]._id);
     assert.deepEqual(testUsers[0], returnedUser);
   });
 
+  // looks for user "1234", it checks if it null if user is not found and gives an error message.
   test("get a user - fail", async () => {
     try {
       const returnedUser = await poiService.getUser("1234");

@@ -1,3 +1,9 @@
+/* This is the data store for the application 
+ The different store options include JSON, mongo database and memory
+ The init() function allows the application to pick which data storetype to be used  */
+
+
+
 import { userMemStore } from "./mem/user-mem-store.js";
 import { categoryMemStore} from "./mem/category-mem-store.js";
 import { placemarkerMemStore} from "./mem/placemarker-mem-store.js";

@@ -1,7 +1,8 @@
 import axios from "axios";
-
+// serviceUrl = "http://localhost:4000" saved in fixtures.js
 import { serviceUrl } from "../fixtures.js";
 
+// Allows users to be added, retrieved and deleted using postman //
 export const poiService = {
   poiUrl: serviceUrl,
 

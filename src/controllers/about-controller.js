@@ -1,3 +1,5 @@
+// This controller handles the about-view. 
+
 export const aboutController = {
     index: {
         handler: function(request, h) {

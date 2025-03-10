@@ -1,5 +1,6 @@
 import {db} from "../models/db.js";
 
+// This retrieves the account associated with logged in user by requesting the credentials and renders the user-view.
 export const userController= {
     index: {
         handler: async function (request, h) {
@@ -14,6 +15,8 @@ export const userController= {
         },
     },
 
+    /* this gets the logged in user, and requests new information from a form. It then checks the userstore update function
+     to allow the new details for the logged in user to update. */
     updateUserDetails: {
         handler: async function(request, h) {
             

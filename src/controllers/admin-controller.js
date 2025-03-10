@@ -1,10 +1,10 @@
 import {db} from "../models/db.js";
 
 
-// the adminController renders the admin-view.
-// The index is responsible for retrieving All users and allowing the attributes to be used.
-// The deleteAdminUser gets the user by their Id number and allows for that user to be deleted by the Id given.
-// The user is then redirected back to the admin page after pressing delete.
+/* the adminController renders the admin-view.
+The index is responsible for retrieving All users and allowing the attributes to be used.
+The deleteAdminUser gets the user by their Id number and allows for that user to be deleted by the Id given.
+The user is then redirected back to the admin page after pressing delete. */
 export const adminController ={
 
     adminIndex: {

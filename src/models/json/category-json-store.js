@@ -2,12 +2,13 @@ import { v4 } from "uuid";
 import { db } from "./store-utils.js";
 import { placemarkerJsonStore } from "./placemarker-json-store.js";
 
+// this reads the database for categories and returns all that are stored.
 export const categoryJsonStore = {
   async getAllCategories() {
     await db.read();
     return db.data.categories;
   },
-
+//  This adds the category by reading the db and push(add) to the array and writes this to the db.
   async addCategory(category) {
     await db.read();
     category._id = v4();
@@ -15,7 +16,7 @@ export const categoryJsonStore = {
     await db.write();
     return category;
   },
-
+// this reads the db, finds the category by its id. If its in the list it will be returned otherwise categories list = null.
   async getCategoryById(id) {
     await db.read();
     let list = db.data.categories.find((category) => category._id === id);
@@ -26,7 +27,7 @@ export const categoryJsonStore = {
     }
     return list;
   },
-
+ // This reads the db, and filters the categories associated with the users id.
   async getUserCategories(userid) {
     await db.read();
     return db.data.categories.filter((category) => category.userid === userid);

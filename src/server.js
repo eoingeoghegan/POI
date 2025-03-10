@@ -9,9 +9,15 @@ import Joi from "joi";
 import { webRoutes } from "./web-routes.js";
 import {apiRoutes} from "./api-routes.js";
 import { db } from "./models/db.js";
-
-
 import { accountsController } from "./controllers/accounts-controller.js";
+
+/*  The code sets up an Hapi.js server on localhost:4000, with plugins for cookie-based authentication, 
+templating using Handlebars, and view rendering using the vision plugin.
+Authentication: Uses a cookie-based session authentication , where session details are validated by accountsController.validate.
+Environment Variables: Loads environment variables from a .env file using dotenv.
+Database: Initializes MongoDB using the db.init("mongo") call.
+Routes: Registers both web and API routes, and then starts the server, logging the URI where it is running.
+Error Handling: Handles unhandled promise rejections by logging them and exiting the process. */
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);

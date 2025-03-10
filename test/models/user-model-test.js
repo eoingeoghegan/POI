@@ -17,8 +17,8 @@ suite("User Model tests", () => {
     const newUser = await db.userStore.addUser(maggie);
     assertSubset(maggie, newUser)
   });
-// This test loops through TestUsers and adds them to the store (3objects).
-// DeleteAll is called and should returned a list = 0 which it does.
+/* This test loops through TestUsers and adds them to the store (3objects).
+ DeleteAll is called and should returned a list = 0 which it does. */
   test("delete a user", async () => {
     for( let i=0; i<testUsers.length; i +=1) {
         // eslint-disable-next-line no-await-in-loop
@@ -44,10 +44,11 @@ suite("User Model tests", () => {
     assert.deepEqual(user, returnedUser2);
   });
 
-  // this adds the users from testUser (homer, bart and marge). Then calls deleteById(homer = [0])
-  // returnedUsers now =2 anf testUsers = 3-1 =2, so one name was deleted successfully.
-  // deletedUser is now undefined as its deleted.
-  // This works, however adding the assert.isNull creates an error I couldn't fix. I tried changing the user JSON store id and email function but no joy.
+  /* this adds the users from testUser (homer, bart and marge). Then calls deleteById(homer = [0])
+   returnedUsers now =2 anf testUsers = 3-1 =2, so one name was deleted successfully.
+   deletedUser is now undefined as its deleted.
+   This works, however adding the assert.isNull creates an error I couldn't fix. 
+   I tried changing the user JSON store id and email function but no joy. */
   test("delete One User - success", async () => {
     for (let i = 0; i < testUsers.length; i += 1) {
         // eslint-disable-next-line no-await-in-loop
@@ -68,8 +69,8 @@ suite("User Model tests", () => {
     console.log("deletedUser:", deletedUser);
 });
 
-// this test checks for a user with the entered id. If it doesn't exist it returns as undefined.
-// same for the email
+/* this test checks for a user with the entered id. If it doesn't exist it returns as undefined.
+ same for the email */
 test("get a user - failures", async () => {
   const noUserWithId = await db.userStore.getUserById("123");
   console.log(noUserWithId);
@@ -79,8 +80,8 @@ test("get a user - failures", async () => {
   assert.equal(noUserWithEmail);
 });
 
- // this test checks if the database has a user with and wrong email, an id.
- // if so the nullUser returns as undefined.
+ /* this test checks if the database has a user with and wrong email, an id.
+  if so the nullUser returns as undefined. */
 test("get a user - bad params", async () => {
   let nullUser = await db.userStore.getUserByEmail("");
   assert.equal(nullUser);

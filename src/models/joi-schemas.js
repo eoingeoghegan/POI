@@ -1,3 +1,5 @@
+// these are the structures for the forms to check the validation.
+
 // eslint-disable-next-line import/no-extraneous-dependencies
 import Joi from "joi";
 

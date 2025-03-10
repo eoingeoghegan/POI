@@ -1,3 +1,4 @@
+ // Import Mongoose for interacting with MongoDB
 import Mongoose from "mongoose";
 
 const { Schema } = Mongoose;

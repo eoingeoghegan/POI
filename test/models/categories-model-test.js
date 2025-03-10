@@ -43,7 +43,8 @@ suite("Category API test", async () =>{
         assertSubset(walks, category);
       });
 
-    // adds 3 catergories to [], picks out category at index 0 and removes it by its id number. then checks if array has one less in it.
+    /* adds 3 catergories to [], picks out category at index 0 and removes it by its id number. 
+    then checks if array has one less in it. */
       test("delete one category -success", async () => {
         for (let i =0; i < testCategories.length; i+=1) {
             // eslint-disable-next-line no-await-in-loop
