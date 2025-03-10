@@ -4,7 +4,7 @@
 
 # Where to go
 - Link to Glitch (insert Glitch link here when created): https://iot-eoingeoghegan.glitch.me/
-- Username: homer simpson
+- Username: homer@mail.com
 - Password: homer
 
 # Project:
@@ -17,4 +17,7 @@
 - There is an admin page, which is basic but shows the users in the database. There is also an option to delete users here.
 
 - The application allows for API creation, deletion, and retrieval of users in the database using Postman through the poiService.
+
+- The application has three storeTypes, Memory, JSON and MongoDB for storing all the details.
+
 
