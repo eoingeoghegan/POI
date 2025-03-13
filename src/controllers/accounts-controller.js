@@ -56,7 +56,11 @@ signup: {
       payload: UserCredentialsSpec,
       options: { abortEarly: false },
       failAction: function (request, h, error) {
-        return h.view("login-view", { title: "Log in error", errors: error.details }).takeover().code(400);
+        return h.view("login-view", { 
+          title: "Log in error", 
+          errors: error.details, 
+          payload: request.payload
+        }).takeover().code(400);
       },
     },
   

@@ -24,7 +24,11 @@ export const categoryController={
           payload: PlacemarkerSpec,
           options: { abortEarly: false },
           failAction: function (request, h, error) {
-            return h.view("category-view", { title: "Add placemarker error", errors: error.details }).takeover().code(400);
+            return h.view("category-view", { 
+              title: "Add placemarker error", 
+              errors: error.details,
+              payload: request.payload
+             }).takeover().code(400);
           },
         },
         handler: async function (request, h) {
