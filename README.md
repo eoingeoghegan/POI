@@ -3,7 +3,7 @@
 - Student ID: 20036009
 
 # Where to go
-- Link to Glitch (insert Glitch link here when created): https://iot-eoingeoghegan.glitch.me/
+- Link to Glitch: https://eoingeoghegan-poi.glitch.me/
 - Username: homer@mail.com
 - Password: homer
 

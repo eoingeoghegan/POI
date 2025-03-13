@@ -1,0 +1,8 @@
+work
+
+
+added info to readme
+
+added user button, web routes and new user controller
+controller has index to display view and function to update details
+view has a form for updating details

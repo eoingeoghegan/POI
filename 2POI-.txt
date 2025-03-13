@@ -1,0 +1,105 @@
+npm install uuid
+
+
+created models - mem user model with 
+import { v4 } from "uuid";
+
+let users = [];
+
+export const userMemStore = {
+  async getAllUsers() {
+    return users;
+  },
+
+  async addUser(user) {
+    user._id = v4();
+    users.push(user);
+    return user;
+  },
+
+  async getUserById(id) {
+    return users.find((user) => user._id === id);
+  },
+
+  async getUserByEmail(email) {
+    return users.find((user) => user.email === email);
+  },
+
+  async deleteUserById(id) {
+    const index = users.findIndex((user) => user._id === id);
+    users.splice(index, 1);
+  },
+
+  async deleteAll() {
+    users = [];
+  },
+};
+
+
+create db.js with 
+import { userMemStore } from "./mem/user-mem-store.js";
+
+
+export const db = {
+  userStore: null,
+  ,
+
+  init() {
+    this.userStore = userMemStore;
+    
+  },
+};
+
+
+
+added to login, signup and dashboard view 
+
+updated the controllers
+
+
+updated the server with 
+import Hapi from "@hapi/hapi";
+import Vision from "@hapi/vision";
+import Handlebars from "handlebars";
+import path from "path";
+import { fileURLToPath } from "url";
+import { webRoutes } from "./web-routes.js";
+import { db } from "./models/db.js";
+
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
+
+async function init() {
+  const server = Hapi.server({
+    port: 3000,
+    host: "localhost",
+  });
+  await server.register(Vision);
+  server.views({
+    engines: {
+      hbs: Handlebars,
+    },
+    relativeTo: __dirname,
+    path: "./views",
+    layoutPath: "./views/layouts",
+    partialsPath: "./views/partials",
+    layout: true,
+    isCached: false,
+  });
+  db.init();
+  server.route(webRoutes);
+  await server.start();
+  console.log("Server running on %s", server.info.uri);
+}
+
+process.on("unhandledRejection", (err) => {
+  console.log(err);
+  process.exit(1);
+});
+
+init();
+
+
+now can sign up, login and go to dashboard + logout
+
+added to GitHub first commit
