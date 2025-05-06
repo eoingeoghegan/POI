@@ -1,15 +1,22 @@
 import Hapi from "@hapi/hapi";
 import Vision from "@hapi/vision";
+import Inert from "@hapi/inert";
+import HapiSwagger from "hapi-swagger";
+
 import Handlebars from "handlebars";
 import path from "path";
 import { fileURLToPath } from "url";
 import Cookie from "@hapi/cookie";
 import dotenv from "dotenv";
 import Joi from "joi";
+import * as jwt from "hapi-auth-jwt2";
+import { validate } from "./api/jwt-utils.js";
 import { webRoutes } from "./web-routes.js";
 import {apiRoutes} from "./api-routes.js";
 import { db } from "./models/db.js";
 import { accountsController } from "./controllers/accounts-controller.js";
+
+
 
 /*  The code sets up an Hapi.js server on localhost:4000, with plugins for cookie-based authentication, 
 templating using Handlebars, and view rendering using the vision plugin.
@@ -19,16 +26,58 @@ Database: Initializes MongoDB using the db.init("mongo") call.
 Routes: Registers both web and API routes, and then starts the server, logging the URI where it is running.
 Error Handling: Handles unhandled promise rejections by logging them and exiting the process. */
 
+ 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
+
+
+
+  
+const result = dotenv.config();
+if (result.error) {
+  console.log(result.error.message);
+  process.exit(1);
+}
+
+const swaggerOptions = {
+  info: {
+    title: "Poi API",
+    version: "0.1",
+  },
+};
+
+// https://akhromieiev.com/tutorials/using-cors-in-hapi/#google_vignette 
+// This allowed me to get the the Service working for adding a user from back to front end by adding routes +corss
 
 async function init() {
   const server = Hapi.server({
     port: 4000,
     host: "localhost",
+    routes: {
+      cors: {
+        origin: ["http://localhost:5173"], 
+        credentials: true,                
+      }
+    }
   });
-  await server.register(Vision);
+  
   await server.register(Cookie);
+  await server.register(jwt);
+  await server.register([
+    Inert,
+    Vision,
+    {
+      plugin: HapiSwagger,
+      options: swaggerOptions,
+    },
+  ]);
+
+  server.auth.strategy("jwt", "jwt", {
+    key: process.env.cookie_password,
+    validate: validate,
+    verifyOptions: { algorithms: ["HS256"] },
+  });
+  
   server.validator(Joi);
   server.views({
     engines: {
@@ -41,15 +90,6 @@ async function init() {
     layout: true,
     isCached: false,
   });
-
-  
-
-const result = dotenv.config();
-if (result.error) {
-  console.log(result.error.message);
-  process.exit(1);
-}
-
 
   server.auth.strategy("session", "cookie", {
     cookie: {

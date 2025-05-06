@@ -40,7 +40,7 @@ export const db = {
         break;
       default:
         this.userStore = userMemStore;
-        this.categorytore = categoryMemStore;
+        this.categoryStore = categoryMemStore;
         this.placemarkerStore = placemarkerMemStore; 
       }
     },

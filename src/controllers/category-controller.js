@@ -39,9 +39,13 @@ export const categoryController={
               lat: request.payload.lat,
               long: request.payload.long,
               difficulty: request.payload.difficulty,
+              categoryid: category._id,
             };
+            
             await db.placemarkerStore.addPlacemarker(category._id, newPlacemarker);
+            
             return h.redirect(`/category/${category._id}`);
+            
           },
         },
 

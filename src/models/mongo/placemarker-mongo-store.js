@@ -4,7 +4,7 @@ import { Placemarker } from "./placemarker.js";
 
 export const placemarkerMongoStore = {
   async getAllPlacemarkers() {
-    const placemarkers = await Placemarker.find().lean();
+    const placemarkers = await Placemarker.find().populate("categoryid").lean();
     return placemarkers;
   },
 
@@ -21,7 +21,7 @@ export const placemarkerMongoStore = {
   
 
   async getPlacemarkersByCategoryId(id) {
-    const placemarkers = await Placemarker.find({ categoryid: id }).lean();
+    const placemarkers = await Placemarker.find({ categoryid: id }).populate("categoryid").lean();
     return placemarkers;
   },
 
@@ -50,8 +50,10 @@ export const placemarkerMongoStore = {
   async updatePlacemarker(placemarker, updatedPlacemarker) {
     const placemarkerDoc = await Placemarker.findOne({ _id: placemarker._id });
     placemarkerDoc.title = updatedPlacemarker.title;
-    placemarkerDoc.artist = updatedPlacemarker.artist;
-    placemarkerDoc.duration = updatedPlacemarker.duration;
+    placemarkerDoc.artist = updatedPlacemarker.description;
+    placemarkerDoc.lat = updatedPlacemarker.lat;
+    placemarkerDoc.long = updatedPlacemarker.long;
+    placemarkerDoc.difficulty = updatedPlacemarker.difficulty;
     await placemarkerDoc.save();
   },
 };

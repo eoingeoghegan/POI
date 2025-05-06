@@ -15,7 +15,7 @@ const placemarkerSchema = new Schema({
   difficulty: String,
   categoryid: {
     type: Schema.Types.ObjectId,
-    ref: "Placemarker",
+    ref: "Category",
   },
 });
 
