@@ -34,6 +34,7 @@ export const PlacemarkerSpec = Joi.object()
     long:  Joi.number().allow("").optional().example(12),
     difficulty: Joi.string().required().example(""),
     categoryid: IdSpec,
+    img: Joi.string().uri().optional(),
    
 
   })
@@ -50,6 +51,7 @@ export const CategorySpec = Joi.object()
   .keys({
     title: Joi.string().required().example(""),
     userid: IdSpec,
+    img: Joi.string().uri().optional(),
     // placemarkers: PlacemarkerArraySpec,
   })
   .label("Category");
