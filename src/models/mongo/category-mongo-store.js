@@ -44,5 +44,13 @@ export const categoryMongoStore = {
 
   async deleteAllCategories() {
     await Category.deleteMany({});
-  }
+  },
+
+  // function for updating an image
+  async updateCategoryList(updatedCategory) {
+    const category = await Category.findOne({ _id: updatedCategory._id });
+    category.title = updatedCategory.title;
+    category.img = updatedCategory.img;
+    await category.save();
+  },
 };

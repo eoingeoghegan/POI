@@ -31,6 +31,8 @@ export const webRoutes = [
     { method: "POST", path: "/category/{id}/addPlacemarker", config: categoryController.addPlacemarker},
     { method: "GET", path: "/category/{id}/deletePlacemarker/{placemarkerid}", config: categoryController.deletePlacemarker},
     
+    { method: "POST", path: "/category/{id}/uploadimage", config: categoryController.uploadImage },
+
 // AdminController Routes
     { method: "GET", path: "/admin", config: adminController.adminIndex},
     { method: "GET", path: "/admin/deleteAdminUser/{id}", config: adminController.deleteAdminUser },

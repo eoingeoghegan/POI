@@ -1,5 +1,6 @@
 import {db} from "../models/db.js";
 import { PlacemarkerSpec } from "../models/joi-schemas.js";
+import { imageStore } from "../models/image-store.js";
 
 // The index requests the category by the id given in the categegory store and allows it to be viewed on the category-view.hbs
 export const categoryController={
@@ -57,6 +58,30 @@ export const categoryController={
             const category = await db.categoryStore.getCategoryById(request.params.id);
             await db.placemarkerStore.deletePlacemarker(request.params.placemarkerid);
             return h.redirect(`/category/${category._id}`);
+          },
+        },
+
+        uploadImage: {
+          handler: async function (request, h) {
+            try {
+              const category = await db.categoryStore.getCategoryById(request.params.id);
+              const file = request.payload.imagefile;
+              if (Object.keys(file).length > 0) {
+                const url = await imageStore.uploadImage(request.payload.imagefile);
+                category.img = url;
+                await db.categoryStore.updateCategoryList(category);
+              }
+              return h.redirect(`/category/${category._id}`);
+            } catch (err) {
+              console.log(err);
+              return h.redirect(`/category/${category._id}`);
+            }
+          },
+          payload: {
+            multipart: true,
+            output: "data",
+            maxBytes: 209715200,
+            parse: true,
           },
         },
       };
