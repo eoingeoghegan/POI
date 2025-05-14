@@ -61,6 +61,7 @@ export const categoryController={
           },
         },
 
+
         uploadImage: {
           handler: async function (request, h) {
             try {

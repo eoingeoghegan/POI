@@ -18,6 +18,8 @@ export const apiRoutes = [
   { method: "GET", path: "/api/categories/{id}", config: categoryApi.findOne },
   { method: "DELETE", path: "/api/categories/{id}", config: categoryApi.deleteOne },
 
+  { method: "POST", path: "/api/categories/{id}/uploadimage", config: categoryApi.uploadImage },
+
   { method: "GET", path: "/api/placemarkers", config: placemarkerApi.find },
   { method: "GET", path: "/api/placemarkers/{id}", config: placemarkerApi.findOne },
   { method: "POST", path: "/api/categories/{id}/placemarkers", config: placemarkerApi.create },

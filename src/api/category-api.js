@@ -2,6 +2,7 @@ import Boom from "@hapi/boom";
 import { db } from "../models/db.js";
 import { IdSpec, CategoryArraySpec, CategorySpec, CategorySpecPlus } from "../models/joi-schemas.js";
 import { validationError } from "./logger.js";
+import { imageStore } from "../models/image-store.js";
 
 export const categoryApi = {
     find: {
@@ -106,5 +107,38 @@ export const categoryApi = {
     description: "Delete all CategoryApi",
   },
 
-  
+  uploadImage: {
+    handler: async function (request, h) {
+      try {
+        const category = await db.categoryStore.getCategoryById(request.params.id);
+        if (!category) {
+          return Boom.notFound("No Category found with this id");
+        }
+
+        const file = request.payload.imagefile;
+        if (!file || Object.keys(file).length === 0) {
+          return Boom.badRequest("No file uploaded");
+        }
+
+        // Call the imageStore to upload the image
+        const url = await imageStore.uploadImage(file);
+        category.img = url;
+        await db.categoryStore.updateCategoryList(category);
+
+        return h.response(category).code(200);
+      } catch (err) {
+        console.error(err);
+        return Boom.serverUnavailable("Error processing image upload");
+      }
+    },
+    payload: {
+      multipart: true,
+      output: "data", // Get the raw data from the uploaded file
+      maxBytes: 209715200, // Max file size (200MB)
+      parse: true, // Automatically parse the incoming data
+    },
+    tags: ["api"],
+    description: "Upload an image for the category",
+    notes: "Returns the updated category with the image URL",
+  },
 };
