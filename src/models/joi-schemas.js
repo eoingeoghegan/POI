@@ -3,7 +3,8 @@
 // eslint-disable-next-line import/no-extraneous-dependencies
 import Joi from "joi";
 
-export const IdSpec = Joi.alternatives().try(Joi.string(), Joi.object()).description("a valid ID");
+export const IdSpec = Joi.alternatives().try(Joi.string(),Joi.number(),     // add this line if numbers are okay
+  Joi.allow(null), Joi.object()).description("a valid ID");
 
 export const UserCredentialsSpec = Joi.object()
   .keys({
