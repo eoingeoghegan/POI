@@ -51,8 +51,8 @@ const swaggerOptions = {
 
 async function init() {
   const server = Hapi.server({
+    host: process.env.HOST || "0.0.0.0",
     port: process.env.PORT || 4000,
-    host: process.env.HOST || "localhost",
     routes: {
       cors: {
         origin: ["http://localhost:5173"], 
