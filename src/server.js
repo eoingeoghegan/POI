@@ -55,7 +55,7 @@ async function init() {
     port: process.env.PORT || 4000,
     routes: {
       cors: {
-        origin: ["http://localhost:5173"], 
+        origin: ["http://localhost:5173", "https://poifront.netlify.app"], 
         credentials: true,                
       }
     }
