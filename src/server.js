@@ -34,9 +34,7 @@ const __dirname = path.dirname(__filename);
 
   
 const result = dotenv.config();
-console.log("ENV COOKIE_NAME:", process.env.COOKIE_NAME);
-console.log("ENV COOKIE_PASSWORD:", process.env.COOKIE_PASSWORD);
-console.log("ENV MONGO_URL:", process.env.MONGO_URL);
+
 if (result.error) {
   console.log(result.error.message);
   // process.exit(1);
