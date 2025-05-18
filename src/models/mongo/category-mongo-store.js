@@ -4,10 +4,10 @@ import { placemarkerMongoStore } from "./placemarker-mongo-store.js";
 
  // Gets all categories from the database, .lean() to get plain JavaScript objects instead of Mongoose docs
 export const categoryMongoStore = {
-  async getAllCategories(userId) {
-  const categories = await Category.find({ userid: userId }).lean();
-  return categories;
-},
+  async getAllCategories() {
+    const categories = await Category.find().lean();
+    return categories;
+  },
 
   // gets a category by its ID and populate placemarker data for that category, then checks if the ID is valid
   //  If category exists, gets the placemarkers associated with the category

@@ -53,7 +53,6 @@ export const categoryApi = {
     handler: async function (request, h) {
       try {
         const category = request.payload;
-        category.userid = request.auth.credentials.id;
         const newCategory = await db.categoryStore.addCategory(category);
         if (newCategory) {
           return h.response(newCategory).code(201);
