@@ -2,6 +2,12 @@ import jwt from "jsonwebtoken";
 import dotenv from "dotenv";
 import { db } from "../models/db.js";
 
+/* 
+This code works by creating a JWT token for the users including there email and id which lasts 1 hour.
+The decodeToken verifies the JWT, retrieves the email and id and returns a decoded object.
+It then validates the decoded user and checks the datbase if the user exists.
+*/
+
 const result = dotenv.config();
 
 export function createToken(user) {

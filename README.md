@@ -37,16 +37,42 @@ npm run start
 - User Dashboard: After login, you’ll be directed to your personal dashboard where you can add and view categories.
 - Admin Page: Unprotected and accessible by anyone, this page shows a list of users and allows user to delete users.
 - Create API Requests: Use Postman to interact with the API to manage users (create, retrieve, delete).
+Updates
+- Added API end points for Category and Placemarker which connects to Frontend.
+- The user can now add images supported by cloudinary.
+- Added JWT .
 
 # API Documentation
 Here are the available API endpoints for interacting with the user data:
 
-- GET /api/users - Retrieve all users
-- POST /api/users - Create a new user
-- DELETE /api/users/{id} - Delete a user by ID
+ /api/users
 
-GET /api/users
-Response:
+- GET	/api/users	Get all users
+- GET	/api/users/{id}	Get user by ID
+- POST	/api/users	Create new user
+- POST	/api/users/authenticate	Authenticate user, return JWT
+- DELETE	/api/users	Delete all users
+
+/api/categories
+
+- GET	/api/categories	Get all categories for current user
+- GET	/api/categories/{id}	Get a single category by ID
+- POST	/api/categories	Create a new category
+- DELETE	/api/categories	Delete all categories
+- DELETE	/api/categories/{id}	Delete a specific category by ID
+- POST	/api/categories/{id}/uploadimage	Upload image for a category
+
+/api/placemarkers
+
+- GET	/api/placemarkers	Get all placemarkers
+- GET	/api/placemarkers/{id}	Get placemarker by ID
+- POST	/api/placemarkers/{categoryId}	Add placemarker to category by ID
+- DELETE	/api/placemarkers	Delete all placemarkers
+- DELETE	/api/placemarkers/{id}	Delete a specific placemarker by ID
+
+ Authentication
+- Register user: POST /api/users
+- Login & get token: POST /api/users/authenticate
 
 
 

@@ -62,6 +62,12 @@ export const categoryController={
         },
 
 
+        /* 
+        uploadImage works by  getting a multipart form with the image, it then gets the
+        category by id, checks if the file was uploaded and uploads to cloudinary image store.
+      The img field in category returns the image URL.
+        */
+
         uploadImage: {
           handler: async function (request, h) {
             try {
