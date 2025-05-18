@@ -3,9 +3,9 @@
 - Student ID: 20036009
 
 # Where to go
-- Link to Glitch: https://eoingeoghegan-poi.glitch.me/
+- Link to Glitch: https://poi-974z.onrender.com
 - Username: homer@mail.com
-- Password: homer
+- Password: a
 
 # Project:
 
