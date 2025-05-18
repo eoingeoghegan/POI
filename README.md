@@ -20,6 +20,9 @@
 - Glitch for deployment
 - Postman for API testing
 - Joi for validation
+- JWT
+- Cloudinary
+
 
 # Installation and Setup
 Clone the repository or import the project to your Glitch account.
